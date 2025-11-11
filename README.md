@@ -1,6 +1,6 @@
 # 🏆 Achiever Perks Hub
 
-![CI](https://github.com/Aryanpuri27/edurev/actions/workflows/ci.yml/badge.svg?branch=main)
+![CI](https://github.com/itsmeabirmohanta/achiever-perks-hub/actions/workflows/ci.yml/badge.svg?branch=main)
 
 A comprehensive web application designed to be a hub for student achievers to discover perks, opportunities, and track their academic and extracurricular accomplishments.
 
@@ -111,7 +111,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Abir Mahanta** - [GitHub](https://github.com/itsmeabirmohanta)
+**Abir Mahanta** - [GitHub](https://github.com/itsmeabirmohanta/achiever-perks-hub)
 
 ## 🙏 Acknowledgments
 
