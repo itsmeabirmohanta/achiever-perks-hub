@@ -63,7 +63,7 @@ const EduRevRPLForm = () => {
       label: "Professional Certification",
       weburl: "https://www.credly.com/",
     },
-    { value: "other", label: "Other", weburl: "" },
+    { value: "other", label: "Any other", weburl: "" },
   ];
 
   const assessmentTypes = [
@@ -307,7 +307,7 @@ const EduRevRPLForm = () => {
                   </Label>
                   <Textarea
                     id="equivalentTopics"
-                    placeholder="List the topics or modules you've covered..."
+                    placeholder="List the topics or modules you have covered..."
                     value={formData.equivalentTopics}
                     onChange={(e) =>
                       setFormData({
@@ -325,7 +325,7 @@ const EduRevRPLForm = () => {
                   Supporting Documents
                 </h3>
                 <div className="space-y-2">
-                  <Label htmlFor="certificate">Upload Evidence *</Label>
+                  <Label htmlFor="certificate">Upload Proof *</Label>
                   <div className="border-2 border-dashed border-primary/20 rounded-lg p-6 text-center hover:border-primary/40 transition-colors">
                     <Input
                       id="certificate"

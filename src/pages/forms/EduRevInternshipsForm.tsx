@@ -56,7 +56,7 @@ const EduRevInternshipsForm = () => {
     "Non-profit",
     "Government",
     "Research & Development",
-    "Other"
+    "Any other"
   ];
 
   const internshipTypes = [
@@ -67,7 +67,7 @@ const EduRevInternshipsForm = () => {
     "Summer Internship",
     "Winter Internship",
     "Semester-long",
-    "Other"
+    "Any other"
   ];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -250,7 +250,7 @@ const EduRevInternshipsForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.industry === "Other" && (
+                    {formData.industry === "Any other" && (
                       <div className="mt-2">
                         <Input 
                           placeholder="Please specify industry"
@@ -340,7 +340,7 @@ const EduRevInternshipsForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.internshipType === "Other" && (
+                    {formData.internshipType === "Any other" && (
                       <div className="mt-2">
                         <Input 
                           placeholder="Please specify internship type"

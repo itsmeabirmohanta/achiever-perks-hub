@@ -1,0 +1,18 @@
+# Normalize line endings and avoid accidental binary/text diffs
+* text=auto
+
+# Force LF for shell scripts
+*.sh eol=lf
+
+# Don't include these in archive exports
+/node_modules/ export-ignore
+/dist/ export-ignore
+/.github/ export-ignore
+
+# Treat common binary formats as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

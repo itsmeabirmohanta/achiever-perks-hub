@@ -74,7 +74,7 @@ const EduRevMOOCForm = () => {
     "IBM SkillsBuild",
     "LinkedIn Learning",
     "Khan Academy",
-    "Other",
+    "Any other",
   ];
 
   const languages = [
@@ -85,7 +85,7 @@ const EduRevMOOCForm = () => {
     "Telugu",
     "Marathi",
     "Gujarati",
-    "Other",
+    "Any other",
   ];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -271,11 +271,11 @@ const EduRevMOOCForm = () => {
               {/* Platform & Course Information */}
               <div className="space-y-4 border-b pb-6">
                 <h3 className="text-lg font-semibold text-primary">
-                  Agency & Course Information
-                </h3>
+                    Platform and Course Information
+                  </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="platform">Agency *</Label>
+                    <Label htmlFor="platform">Platform *</Label>
                     <Select
                       value={formData.platform}
                       onValueChange={(value) =>
@@ -283,8 +283,8 @@ const EduRevMOOCForm = () => {
                       }
                       required
                     >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select agency" />
+                        <SelectTrigger>
+                        <SelectValue placeholder="Select platform" />
                       </SelectTrigger>
                       <SelectContent>
                         {platforms.map((platform) => (
@@ -294,10 +294,10 @@ const EduRevMOOCForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.platform === "Other" && (
+                        {formData.platform === "Any other" && (
                       <div className="mt-2">
                         <Input
-                          placeholder="Please specify your agency"
+                          placeholder="Please specify your platform"
                           value={formData.customPlatform}
                           onChange={(e) =>
                             setFormData({
@@ -387,9 +387,7 @@ const EduRevMOOCForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="verificationUrl">
-                    Certificate Verification URL *
-                  </Label>
+                  <Label htmlFor="verificationUrl">Certificate Verification URL</Label>
                   <div className="flex items-center gap-2">
                     <Input
                       id="verificationUrl"
@@ -402,7 +400,6 @@ const EduRevMOOCForm = () => {
                       }
                       placeholder="https://coursera.org/verify/..."
                       type="url"
-                      required
                     />
                     {formData.verificationUrl && (
                       <Button
@@ -431,7 +428,7 @@ const EduRevMOOCForm = () => {
                   </Label>
                   <Textarea
                     id="courseContent"
-                    placeholder="Include: Topics covered (equivalent to course), skills & knowledge gained, and any project work or practical components completed..."
+                    placeholder="Include: Topics covered (equivalent to the course), skills and knowledge gained, and any project work or practical components completed..."
                     value={formData.courseContent}
                     onChange={(e) =>
                       setFormData({
@@ -527,7 +524,7 @@ const EduRevMOOCForm = () => {
                 </h4>
                 <ul className="text-sm text-blue-800 space-y-1">
                   <li>
-                    • Bonus marks (2-10 marks) based on certification quality
+                    • 2–10 bonus marks based on certification quality.
                   </li>
                   <li>• Direct credit for relevant course components</li>
                   <li>

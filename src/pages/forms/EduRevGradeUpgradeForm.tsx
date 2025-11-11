@@ -140,11 +140,11 @@ const EduRevGradeUpgradeForm = () => {
           <div className="text-center">
             <Badge className="mb-4 bg-purple-100 text-purple-800 border-purple-300">
               <BookOpen className="w-4 h-4 mr-1" />
-              Grade Upgradation (Core/Non-Core)
+              Grade Upgrade (Core/Non-Core)
             </Badge>
             <h1 className="text-4xl font-bold academic-heading mb-4">Grade Upgrade Application</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Submit your achievement for grade upgradation
+              Submit your achievement for grade upgrade.
             </p>
           </div>
         </div>

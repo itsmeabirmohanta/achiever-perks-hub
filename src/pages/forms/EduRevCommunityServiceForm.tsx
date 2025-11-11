@@ -49,7 +49,7 @@ const EduRevCommunityServiceForm = () => {
     "Community Center",
     "Environmental Organization",
     "Youth Organization",
-    "Other"
+    "Any other"
   ];
 
   const serviceTypes = [
@@ -64,7 +64,7 @@ const EduRevCommunityServiceForm = () => {
     "Clean-up Drives",
     "Fundraising",
     "Mentoring",
-    "Other"
+    "Any other"
   ];
 
   const serviceFrequencies = [
@@ -74,7 +74,7 @@ const EduRevCommunityServiceForm = () => {
     "Monthly",
     "Seasonal",
     "Ongoing",
-    "Other"
+    "Any other"
   ];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -254,7 +254,7 @@ const EduRevCommunityServiceForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.organizationType === "Other" && (
+                    {formData.organizationType === "Any other" && (
                       <div className="mt-2">
                         <Input 
                           placeholder="Please specify organization type"
@@ -293,7 +293,7 @@ const EduRevCommunityServiceForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.serviceType === "Other" && (
+                    {formData.serviceType === "Any other" && (
                       <div className="mt-2">
                         <Input 
                           placeholder="Please specify service type"

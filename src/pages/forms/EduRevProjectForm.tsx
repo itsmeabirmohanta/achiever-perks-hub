@@ -41,7 +41,7 @@ const EduRevProjectForm = () => {
     "Research Project",
     "Startup Idea",
     "Open Source Contribution",
-    "Other"
+    "Any other"
   ];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -195,7 +195,7 @@ const EduRevProjectForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.projectType === "Other" && (
+                    {formData.projectType === "Any other" && (
                       <div className="mt-2">
                         <Input 
                           placeholder="Please specify your project type"

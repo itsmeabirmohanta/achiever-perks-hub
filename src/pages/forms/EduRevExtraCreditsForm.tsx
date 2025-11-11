@@ -55,7 +55,7 @@ const EduRevExtraCreditsForm = () => {
     "Technical Talk Delivery",
     "Tutorial Session Leading",
     "Student Exhibition Curator",
-    "Other"
+    "Any other"
   ];
 
   const roles = [
@@ -65,7 +65,7 @@ const EduRevExtraCreditsForm = () => {
     "Volunteer",
     "Team Lead",
     "Mentor",
-    "Other"
+    "Any other"
   ];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -226,7 +226,7 @@ const EduRevExtraCreditsForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.activityType === "Other" && (
+                    {formData.activityType === "Any other" && (
                       <div className="mt-2">
                         <Input 
                           placeholder="Please specify your activity type"
@@ -248,7 +248,7 @@ const EduRevExtraCreditsForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.role === "Other" && (
+                    {formData.role === "Any other" && (
                       <div className="mt-2">
                         <Input 
                           placeholder="Please specify your role"
@@ -268,12 +268,12 @@ const EduRevExtraCreditsForm = () => {
                   <Label htmlFor="eventDescription">
                     Event Description
                     <span className="text-xs text-muted-foreground ml-2">
-                      (Specify the co-curricular/extra curricular/ cultural activities wherein student can participate in order to avail course equivalence)
+                      (Specify the co-curricular, extra-curricular, or cultural activities in which students can participate to obtain course equivalence.)
                     </span>
                   </Label>
                   <Textarea
                     id="eventDescription"
-                    placeholder="Describe the co-curricular/extra curricular/cultural activities..."
+                    placeholder="Describe the co-curricular, extra-curricular, or cultural activities..."
                     value={formData.eventDescription}
                     onChange={(e) => setFormData({...formData, eventDescription: e.target.value})}
                     className="min-h-[80px]"
@@ -297,7 +297,7 @@ const EduRevExtraCreditsForm = () => {
                   <Label>
                     Level
                     <span className="text-xs text-muted-foreground ml-2">
-                      (Level of co-curricular/extra curricular/ cultural activities)
+                      (Level of co-curricular, extra-curricular, or cultural activities)
                     </span>
                   </Label>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -358,7 +358,7 @@ const EduRevExtraCreditsForm = () => {
                         }
                       />
                       <Label htmlFor="levelOther" className="cursor-pointer font-normal">
-                        Other
+                        Any other
                       </Label>
                     </div>
                   </div>
@@ -379,7 +379,7 @@ const EduRevExtraCreditsForm = () => {
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-primary">Supporting Documents</h3>
                 <div className="space-y-2">
-                  <Label htmlFor="evidence">Upload Evidence</Label>
+                  <Label htmlFor="evidence">Upload Proof</Label>
                   <div className="border-2 border-dashed border-primary/20 rounded-lg p-6 text-center hover:border-primary/40 transition-colors">
                     <Input 
                       id="evidence" 

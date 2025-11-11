@@ -162,7 +162,7 @@ const BeyondAcademics = () => {
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold academic-heading mb-6 px-4">
-            Showcase Your <span className=" ">Excellence</span>
+            Showcase Your <span>Excellence</span>
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 px-4">

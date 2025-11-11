@@ -20,7 +20,8 @@ import { v4 as uuidv4 } from 'uuid';
 const categoryDisplay: { [key: string]: string } = {
   rpl: "Recognition of Prior Learning (RPL)",
   mooc: "MOOC / CERTIFICATIONS",
-  "grade-upgradation": "Grade Upgradation (Core/Non Core)",
+  "grade-upgradation": "Grade Upgrade (Core/Non-Core)",
+  
   project: "Project",
   "extra-credits": "Extra Credits",
   "social-media": "Social Media",
@@ -189,11 +190,10 @@ const EduRevAddAchievement = () => {
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold academic-heading mb-4">
-            Edu Rev Portal
+            EduRev Portal
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Submit your structured achievements tied to academic, research, and career pathways. 
-            Get verified and unlock course-specific benefits automatically.
+            Submit your structured achievements aligned to academic, research, or career pathways.
           </p>
           
           <div className="flex flex-wrap justify-center gap-2 mt-6">

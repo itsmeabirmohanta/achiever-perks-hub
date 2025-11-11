@@ -39,13 +39,13 @@ const EduRev = () => {
       link: "/edurev/courses/mooc",
     },
     {
-      icon: "�",
-      title: "Grade Upgradation (Core/Non Core)",
+      icon: "📈",
+      title: "Grade Upgrade (Core/Non-Core)",
       description: "Improve your grades in both core and non-core subjects.",
       link: "/edurev/courses/grade-upgradation",
     },
     {
-      icon: "�",
+      icon: "🛠️",
       title: "Project",
       description: "Get benefits for your projects and practical work.",
       link: "/edurev/courses/project",
@@ -72,7 +72,7 @@ const EduRev = () => {
     },
     {
       icon: "💼",
-      title: "Internship Beyond the Curriculum",
+      title: "Internships Beyond the Curriculum",
       description:
         "Get academic benefits from your professional internship experiences.",
       link: "/edurev/courses/internships",
@@ -153,8 +153,7 @@ const EduRev = () => {
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold academic-heading mb-6 md:mb-8 leading-tight">
-              Transform Your{" "}
-              <span className="block md:inline">Achievements Into Success</span>
+              Transform Your Achievements into Success
             </h1>
 
             <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed">
@@ -222,8 +221,7 @@ const EduRev = () => {
               Explore EduRev Categories
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-              Select a category to discover eligible courses and unlock academic
-              benefits.
+              Select the course for which you want to claim benefits.
             </p>
           </div>
 

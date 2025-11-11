@@ -54,7 +54,7 @@ const EduRevSocialMediaForm = () => {
     "Facebook",
     "Pinterest",
     "Snapchat",
-    "Other"
+    "Any other"
   ];
 
   const contentTypes = [
@@ -66,7 +66,7 @@ const EduRevSocialMediaForm = () => {
     "Social Causes",
     "Tech Reviews",
     "Lifestyle",
-    "Other"
+    "Any other"
   ];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -235,11 +235,11 @@ const EduRevSocialMediaForm = () => {
                       </SelectTrigger>
                       <SelectContent>
                         {platforms.map((platform) => (
-                          <SelectItem key={platform} value={platform}>{platform}</SelectItem>
-                        ))}
+                              <SelectItem key={platform} value={platform}>{platform}</SelectItem>
+                            ))}
                       </SelectContent>
                     </Select>
-                    {formData.platform === "Other" && (
+                        {formData.platform === "Any other" && (
                       <div className="mt-2">
                         <Input 
                           placeholder="Please specify your platform"
@@ -335,7 +335,7 @@ const EduRevSocialMediaForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.contentType === "Other" && (
+                    {formData.contentType === "Any other" && (
                       <div className="mt-2">
                         <Input 
                           placeholder="Please specify content type"

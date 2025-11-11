@@ -129,7 +129,7 @@ const StudentReferral = () => {
               Refer High-Achieving Students
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Know someone with outstanding achievements? Refer them to our platform and earn rewards when they get verified!
+              Know someone with outstanding achievements? Refer them to our platform, and earn rewards when they get verified!
             </p>
           </div>
         </div>
@@ -290,9 +290,9 @@ const StudentReferral = () => {
                     <div className="text-sm text-blue-800">
                       <p className="font-medium mb-1">Referral Process:</p>
                       <ul className="space-y-1">
-                        <li>• We'll contact the referred student to verify their achievements</li>
-                        <li>• Upon successful verification, both you and the student receive rewards</li>
-                        <li>• You'll be notified of the referral status via email</li>
+              <li>• We will contact the referred student to verify their achievements</li>
+              <li>• Upon successful verification, both you and the student receive rewards</li>
+              <li>• You will be notified of the referral status via email</li>
                       </ul>
                     </div>
                   </div>

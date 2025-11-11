@@ -87,7 +87,7 @@ const Courses = () => {
               Your Enrolled Courses
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Discover available EduRev benefits for each of your courses. Click on any course to see detailed benefit options.
+              Discover the available EduRev benefits for each of your courses.
             </p>
           </div>
         </div>

@@ -72,7 +72,7 @@ const EduRevRevenueGenerationForm = () => {
     "Consulting Services",
     "Online Course",
     "Freelance Work",
-    "Other",
+    "Any other",
   ];
 
   const businessModels = [
@@ -84,7 +84,7 @@ const EduRevRevenueGenerationForm = () => {
     "One-time Purchase",
     "Commission-based",
     "Advertising Revenue",
-    "Other",
+    "Any other",
   ];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -303,7 +303,7 @@ const EduRevRevenueGenerationForm = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.projectType === "Other" && (
+                    {formData.projectType === "Any other" && (
                       <div className="mt-2">
                         <Input
                           placeholder="Please specify project type"

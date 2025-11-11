@@ -1,5 +1,7 @@
 # 🏆 Achiever Perks Hub
 
+![CI](https://github.com/Aryanpuri27/edurev/actions/workflows/ci.yml/badge.svg?branch=main)
+
 A comprehensive web application designed to be a hub for student achievers to discover perks, opportunities, and track their academic and extracurricular accomplishments.
 
 ## ✨ Features

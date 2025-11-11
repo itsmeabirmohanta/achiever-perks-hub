@@ -55,7 +55,7 @@ const categoryData: { [key: string]: CategoryData } = {
     ]
   },
   "grade-upgradation": {
-    title: "Grade Upgradation (Core/Non Core)",
+    title: "Grade Upgrade (Core/Non-Core)",
     description: "Courses where you can improve your grades through additional work.",
     courses: [
       {
@@ -335,7 +335,7 @@ const EduRevCategoryCourses = () => {
 
         <div className="text-center bg-gradient-hero text-white rounded-2xl p-8 mt-12">
           <h3 className="text-2xl font-bold mb-4">
-            Don't see your course?
+            Don’t See Your Course?
           </h3>
           <p className="text-white/90 mb-6 max-w-2xl mx-auto">
             If your course is not listed, it may not be eligible for this category. Check other categories or contact faculty for more information.

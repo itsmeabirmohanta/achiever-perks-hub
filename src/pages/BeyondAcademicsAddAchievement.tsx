@@ -62,7 +62,7 @@ const BeyondAcademicsAddAchievement = () => {
   const competitionLevels = [
     { value: "college", label: "College Level", description: "Competitions or events held within your college" },
     { value: "university", label: "University Level", description: "Competitions or events involving multiple colleges within the same university" },
-    { value: "state", label: "State Level", description: "Competitions or sub-nationals from across the state" },
+    { value: "state", label: "State Level", description: "Competitions at the regional or state level." },
     { value: "national", label: "National Level", description: "Competitions or events involving participants from across the country" },
     { value: "international", label: "International Level", description: "Competitions or events involving participants from multiple countries" }
   ];

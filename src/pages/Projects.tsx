@@ -113,14 +113,14 @@ const Projects = () => {
   const handleApplyProject = (projectId: number) => {
     toast({
       title: "Application Submitted! 🚀",
-      description: "Your project application has been sent to the mentor. You'll hear back within 48 hours.",
+      description: "Your project application has been sent to the mentor. You will hear back within 48 hours.",
     });
   };
 
   const handleContactMentor = (mentorName: string) => {
     toast({
       title: "Contact Request Sent! 📧",
-      description: `A meeting request has been sent to ${mentorName}. They'll respond to schedule a consultation.`,
+      description: "The mentor will respond to schedule a consultation.",
     });
   };
 
