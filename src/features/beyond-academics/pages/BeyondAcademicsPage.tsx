@@ -23,7 +23,7 @@ import {
   Zap,
   Gift,
 } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 
 const BeyondAcademics = () => {
   const benefits = [

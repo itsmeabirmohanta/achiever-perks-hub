@@ -7,12 +7,12 @@ import {
   TrendingUp, Lightbulb, GraduationCap, Star,
   CheckCircle, Trophy, FileText, MessageCircle
 } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 
 const Index = () => {
   const pathways = [
     {
-      title: "Edu Rev",
+      title: "Edu Revolution",
       subtitle: "Academic Excellence Pathway",
       description: "Submit structured achievements tied to academic, research, and career pathways. Get verified and unlock course-specific benefits automatically.",
       icon: BookOpen,
@@ -95,11 +95,11 @@ const Index = () => {
             </Badge>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-              EduRev
+              EDU REVOLUTION
             </h1>
             
             <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed drop-shadow-md">
-              Revolutionizing the way student achievements are recognized, verified, and rewarded.
+              Revolutionizing the way student achievements are recognized and rewarded.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-12">

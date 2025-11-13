@@ -20,18 +20,17 @@ import {
 } from "@/components/ui/select";
 import {
   Upload,
-  BookOpen,
+  DollarSign,
   Award,
   FileText,
   CheckCircle,
-  GraduationCap,
-  ExternalLink,
+  TrendingUp,
 } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { useParams, Link } from "react-router-dom";
 
-const EduRevMOOCForm = () => {
+const EduRevRevenueGenerationForm = () => {
   const { courseCode } = useParams<{ courseCode?: string }>();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,48 +42,48 @@ const EduRevMOOCForm = () => {
     courseCode: courseCode || "",
     courseName: "",
 
-    // MOOC Specific Fields
-    platform: "", // Coursera, edX, Udemy, etc.
-    customPlatform: "",
-    courseTitle: "",
-    instructorName: "",
+    // Project Information
+    projectName: "",
+    projectType: "",
+    customProjectType: "",
+    businessModel: "",
+
+    // Revenue Details
+    totalRevenue: "",
+    revenueCurrency: "USD",
+    revenuePeriod: "",
+    revenueBreakdown: "",
+
+    // Business Details
     startDate: "",
-    endDate: "",
-    certificateNumber: "",
-    verificationUrl: "",
+    operationalStatus: "",
+    websiteUrl: "",
 
-    // Course Details (Combined)
-    courseContent: "",
-
-    // Additional Info
-    cost: "",
-    language: "English",
-    customLanguage: "",
+    // Details
+    details: "",
   });
 
-  const platforms = [
-    "Coursera",
-    "edX",
-    "Udemy",
-    "Udacity",
-    "Cisco Networking Academy",
-    "Microsoft Learn",
-    "Google Digital Garage",
-    "AWS Training",
-    "IBM SkillsBuild",
-    "LinkedIn Learning",
-    "Khan Academy",
+  const projectTypes = [
+    "E-commerce Store",
+    "SaaS Product",
+    "Mobile App",
+    "Service Business",
+    "Digital Product",
+    "Consulting Services",
+    "Online Course",
+    "Freelance Work",
     "Any other",
   ];
 
-  const languages = [
-    "English",
-    "Hindi",
-    "Bengali",
-    "Tamil",
-    "Telugu",
-    "Marathi",
-    "Gujarati",
+  const businessModels = [
+    "B2C (Business to Consumer)",
+    "B2B (Business to Business)",
+    "B2B2C (Business to Business to Consumer)",
+    "Marketplace",
+    "Subscription",
+    "One-time Purchase",
+    "Commission-based",
+    "Advertising Revenue",
     "Any other",
   ];
 
@@ -101,7 +100,7 @@ const EduRevMOOCForm = () => {
       }
       setSelectedFile(file);
       toast({
-        title: "Certificate Selected",
+        title: "Document Selected",
         description: `${file.name} added successfully.`,
       });
     }
@@ -113,14 +112,12 @@ const EduRevMOOCForm = () => {
     if (
       !formData.studentName ||
       !formData.courseCode ||
-      !formData.platform ||
-      !formData.courseTitle ||
-      !selectedFile
+      !formData.projectName ||
+      !formData.totalRevenue
     ) {
       toast({
         title: "Incomplete Information",
-        description:
-          "Please fill in all required fields and upload your certificate.",
+        description: "Please fill in all required fields.",
         variant: "destructive",
       });
       return;
@@ -132,29 +129,28 @@ const EduRevMOOCForm = () => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       toast({
-        title: "MOOC Application Submitted! 🎓",
+        title: "Revenue Generation Project Submitted! 💰",
         description:
-          "Your MOOC/certification application has been sent for faculty review.",
+          "Your revenue generation project has been sent for faculty review.",
       });
 
-      // Reset form
       setFormData({
         studentName: "",
         studentId: "",
         courseCode: courseCode || "",
         courseName: "",
-        platform: "",
-        customPlatform: "",
-        courseTitle: "",
-        instructorName: "",
+        projectName: "",
+        projectType: "",
+        customProjectType: "",
+        businessModel: "",
+        totalRevenue: "",
+        revenueCurrency: "USD",
+        revenuePeriod: "",
+        revenueBreakdown: "",
         startDate: "",
-        endDate: "",
-        certificateNumber: "",
-        verificationUrl: "",
-        courseContent: "",
-        cost: "",
-        language: "English",
-        customLanguage: "",
+        operationalStatus: "",
+        websiteUrl: "",
+        details: "",
       });
       setSelectedFile(null);
     } catch (error) {
@@ -177,18 +173,18 @@ const EduRevMOOCForm = () => {
             to="/edu-rev"
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-4"
           >
-            ← Back to EduRev
+            ← Back to Edu Revolution
           </Link>
           <div className="text-center">
-            <Badge className="mb-4 bg-blue-100 text-blue-800 border-blue-300">
-              <BookOpen className="w-4 h-4 mr-1" />
-              MOOC / Certifications
+            <Badge className="mb-4 bg-green-100 text-green-800 border-green-300">
+              <DollarSign className="w-4 h-4 mr-1" />
+              Revenue Generation
             </Badge>
             <h1 className="text-4xl font-bold academic-heading mb-4">
-              MOOC & Certification Application
+              Revenue Generation Project Application
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Submit your online course completion and certification for
+              Submit your revenue-generating projects and business ventures for
               academic benefits
             </p>
           </div>
@@ -197,11 +193,12 @@ const EduRevMOOCForm = () => {
         <Card className="max-w-4xl mx-auto shadow-elegant">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <GraduationCap className="w-6 h-6 text-primary" />
-              Certification Details
+              <TrendingUp className="w-6 h-6 text-primary" />
+              Project & Revenue Details
             </CardTitle>
             <CardDescription>
-              Provide comprehensive information about your MOOC or certification
+              Provide comprehensive information about your revenue-generating
+              project
             </CardDescription>
           </CardHeader>
 
@@ -249,7 +246,7 @@ const EduRevMOOCForm = () => {
                       onChange={(e) =>
                         setFormData({ ...formData, courseCode: e.target.value })
                       }
-                      placeholder="e.g., CSE201"
+                      placeholder="e.g., BUS101"
                       required
                       disabled={!!courseCode}
                     />
@@ -262,47 +259,59 @@ const EduRevMOOCForm = () => {
                       onChange={(e) =>
                         setFormData({ ...formData, courseName: e.target.value })
                       }
-                      placeholder="e.g., Data Structures"
+                      placeholder="e.g., Entrepreneurship"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Platform & Course Information */}
+              {/* Project Information */}
               <div className="space-y-4 border-b pb-6">
                 <h3 className="text-lg font-semibold text-primary">
-                    Platform and Course Information
-                  </h3>
+                  Project Information
+                </h3>
+                <div className="space-y-2">
+                  <Label htmlFor="projectName">Project/Business Name *</Label>
+                  <Input
+                    id="projectName"
+                    value={formData.projectName}
+                    onChange={(e) =>
+                      setFormData({ ...formData, projectName: e.target.value })
+                    }
+                    placeholder="e.g., TechStart Solutions"
+                    required
+                  />
+                </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="platform">Platform *</Label>
+                    <Label htmlFor="projectType">Project Type *</Label>
                     <Select
-                      value={formData.platform}
+                      value={formData.projectType}
                       onValueChange={(value) =>
-                        setFormData({ ...formData, platform: value })
+                        setFormData({ ...formData, projectType: value })
                       }
                       required
                     >
-                        <SelectTrigger>
-                        <SelectValue placeholder="Select platform" />
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select project type" />
                       </SelectTrigger>
                       <SelectContent>
-                        {platforms.map((platform) => (
-                          <SelectItem key={platform} value={platform}>
-                            {platform}
+                        {projectTypes.map((type) => (
+                          <SelectItem key={type} value={type}>
+                            {type}
                           </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
-                        {formData.platform === "Any other" && (
+                    {formData.projectType === "Any other" && (
                       <div className="mt-2">
                         <Input
-                          placeholder="Please specify your platform"
-                          value={formData.customPlatform}
+                          placeholder="Please specify project type"
+                          value={formData.customProjectType}
                           onChange={(e) =>
                             setFormData({
                               ...formData,
-                              customPlatform: e.target.value,
+                              customProjectType: e.target.value,
                             })
                           }
                         />
@@ -310,36 +319,25 @@ const EduRevMOOCForm = () => {
                     )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="courseTitle">Course Title *</Label>
-                    <Input
-                      id="courseTitle"
-                      value={formData.courseTitle}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          courseTitle: e.target.value,
-                        })
+                    <Label htmlFor="businessModel">Business Model</Label>
+                    <Select
+                      value={formData.businessModel}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, businessModel: value })
                       }
-                      placeholder="e.g., Machine Learning by Andrew Ng"
-                      required
-                    />
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select business model" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {businessModels.map((model) => (
+                          <SelectItem key={model} value={model}>
+                            {model}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="instructorName">
-                    Instructor/Organization
-                  </Label>
-                  <Input
-                    id="instructorName"
-                    value={formData.instructorName}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        instructorName: e.target.value,
-                      })
-                    }
-                    placeholder="e.g., Stanford University, Andrew Ng"
-                  />
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -354,86 +352,127 @@ const EduRevMOOCForm = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="endDate">End Date</Label>
-                    <Input
-                      id="endDate"
-                      type="date"
-                      value={formData.endDate}
-                      onChange={(e) =>
-                        setFormData({ ...formData, endDate: e.target.value })
+                    <Label htmlFor="operationalStatus">
+                      Operational Status
+                    </Label>
+                    <Select
+                      value={formData.operationalStatus}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, operationalStatus: value })
                       }
-                    />
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="active">Active</SelectItem>
+                        <SelectItem value="scaling">Scaling</SelectItem>
+                        <SelectItem value="paused">Paused</SelectItem>
+                        <SelectItem value="completed">Completed</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="websiteUrl">Website/Product URL</Label>
+                  <Input
+                    id="websiteUrl"
+                    value={formData.websiteUrl}
+                    onChange={(e) =>
+                      setFormData({ ...formData, websiteUrl: e.target.value })
+                    }
+                    placeholder="https://yourproject.com"
+                    type="url"
+                  />
                 </div>
               </div>
 
-              {/* Certificate Information */}
+              {/* Revenue Details */}
               <div className="space-y-4 border-b pb-6">
                 <h3 className="text-lg font-semibold text-primary">
-                  Certificate Information
+                  Revenue Information
                 </h3>
-                <div className="space-y-2">
-                  <Label htmlFor="certificateNumber">Certificate Number</Label>
-                  <Input
-                    id="certificateNumber"
-                    value={formData.certificateNumber}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        certificateNumber: e.target.value,
-                      })
-                    }
-                    placeholder="Certificate serial number"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="verificationUrl">Certificate Verification URL</Label>
-                  <div className="flex items-center gap-2">
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="totalRevenue">Total Revenue *</Label>
                     <Input
-                      id="verificationUrl"
-                      value={formData.verificationUrl}
+                      id="totalRevenue"
+                      type="number"
+                      value={formData.totalRevenue}
                       onChange={(e) =>
                         setFormData({
                           ...formData,
-                          verificationUrl: e.target.value,
+                          totalRevenue: e.target.value,
                         })
                       }
-                      placeholder="https://coursera.org/verify/..."
-                      type="url"
+                      placeholder="e.g., 50000"
+                      required
                     />
-                    {formData.verificationUrl && (
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="icon"
-                        onClick={() =>
-                          window.open(formData.verificationUrl, "_blank")
-                        }
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </Button>
-                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="revenueCurrency">Currency</Label>
+                    <Select
+                      value={formData.revenueCurrency}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, revenueCurrency: value })
+                      }
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="USD">USD ($)</SelectItem>
+                        <SelectItem value="INR">INR (₹)</SelectItem>
+                        <SelectItem value="EUR">EUR (€)</SelectItem>
+                        <SelectItem value="GBP">GBP (£)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="revenuePeriod">Revenue Period</Label>
+                    <Input
+                      id="revenuePeriod"
+                      value={formData.revenuePeriod}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          revenuePeriod: e.target.value,
+                        })
+                      }
+                      placeholder="e.g., Last 6 months, Year 2024"
+                    />
                   </div>
                 </div>
-              </div>
-
-              {/* Course Content */}
-              <div className="space-y-4 border-b pb-6">
-                <h3 className="text-lg font-semibold text-primary">
-                  Course Content & Learning
-                </h3>
-                <div className="space-y-2">
-                  <Label htmlFor="courseContent">
-                    Course Content, Skills & Projects
-                  </Label>
+                {/* <div className="space-y-2">
+                  <Label htmlFor="revenueBreakdown">Revenue Breakdown</Label>
                   <Textarea
-                    id="courseContent"
-                    placeholder="Include: Topics covered (equivalent to the course), skills and knowledge gained, and any project work or practical components completed..."
-                    value={formData.courseContent}
+                    id="revenueBreakdown"
+                    placeholder="Describe revenue sources, monthly/quarterly breakdown, growth trajectory..."
+                    value={formData.revenueBreakdown}
                     onChange={(e) =>
                       setFormData({
                         ...formData,
-                        courseContent: e.target.value,
+                        revenueBreakdown: e.target.value,
+                      })
+                    }
+                    className="min-h-[100px]"
+                  />
+                </div> */}
+              </div>
+
+              {/* Details */}
+              <div className="space-y-4 border-b pb-6">
+                <h3 className="text-lg font-semibold text-primary">Details</h3>
+                <div className="space-y-2">
+                  <Label htmlFor="details">Project Details</Label>
+                  <Textarea
+                    id="details"
+                    placeholder="Provide comprehensive details about your project including business model, impact, technologies used, team information, growth metrics, and any other relevant information..."
+                    value={formData.details}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        details: e.target.value,
                       })
                     }
                     className="min-h-[200px]"
@@ -441,30 +480,29 @@ const EduRevMOOCForm = () => {
                 </div>
               </div>
 
-              {/* Certificate Upload */}
+              {/* Supporting Documents */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-primary">
-                  Upload Certificate
+                  Supporting Documents
                 </h3>
                 <div className="space-y-2">
-                  <Label htmlFor="certificate">Certificate File *</Label>
+                  <Label htmlFor="document">
+                    Upload Financial Statements or Proof of Revenue
+                  </Label>
                   <div className="border-2 border-dashed border-primary/20 rounded-lg p-6 text-center hover:border-primary/40 transition-colors">
                     <Input
-                      id="certificate"
+                      id="document"
                       type="file"
                       className="hidden"
                       accept=".pdf,.jpg,.jpeg,.png"
                       onChange={handleFileChange}
                     />
-                    <label htmlFor="certificate" className="cursor-pointer">
+                    <label htmlFor="document" className="cursor-pointer">
                       {selectedFile ? (
                         <div className="flex flex-col items-center">
                           <FileText className="h-12 w-12 text-primary mb-2" />
                           <p className="text-sm font-medium">
                             {selectedFile.name}
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
                           </p>
                           <Button
                             variant="ghost"
@@ -482,7 +520,8 @@ const EduRevMOOCForm = () => {
                         <>
                           <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                           <p className="text-sm text-muted-foreground">
-                            Click to upload your certificate
+                            Click to upload financial statements, revenue
+                            reports, or proof documents
                           </p>
                           <p className="text-xs text-muted-foreground mt-1">
                             PDF, JPG, PNG (Max 10MB)
@@ -505,7 +544,7 @@ const EduRevMOOCForm = () => {
                 ) : (
                   <>
                     <Award className="mr-2 h-5 w-5" />
-                    Submit Certification Application
+                    Submit Revenue Generation Project
                   </>
                 )}
               </Button>
@@ -513,24 +552,19 @@ const EduRevMOOCForm = () => {
           </CardContent>
         </Card>
 
-        {/* Info Card */}
-        <Card className="max-w-4xl mx-auto mt-6 bg-blue-50 border-blue-200">
+        <Card className="max-w-4xl mx-auto mt-6 bg-green-50 border-green-200">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-blue-600 mt-0.5" />
+              <CheckCircle className="w-6 h-6 text-green-600 mt-0.5" />
               <div>
-                <h4 className="font-semibold text-blue-900 mb-2">
-                  MOOC Benefits
+                <h4 className="font-semibold text-green-900 mb-2">
+                  Revenue Generation Benefits
                 </h4>
-                <ul className="text-sm text-blue-800 space-y-1">
-                  <li>
-                    • 2–10 bonus marks based on certification quality.
-                  </li>
-                  <li>• Direct credit for relevant course components</li>
-                  <li>
-                    • Internship referral opportunities for certified students
-                  </li>
-                  <li>• Application reviewed within 7-10 days</li>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Entrepreneurship recognition and credits</li>
+                  <li>• Business mentorship opportunities</li>
+                  <li>• Extra credits for verified revenue projects</li>
+                  <li>• Startup incubation support</li>
                 </ul>
               </div>
             </div>
@@ -541,4 +575,4 @@ const EduRevMOOCForm = () => {
   );
 };
 
-export default EduRevMOOCForm;
+export default EduRevRevenueGenerationForm;

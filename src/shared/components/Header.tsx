@@ -10,7 +10,7 @@ const Header = () => {
 
   const navigation = [
     { name: "Home", href: "/", icon: GraduationCap },
-    { name: "Edu Rev", href: "/edu-rev", icon: BookOpen },
+    { name: "Edu Revolution", href: "/edu-rev", icon: BookOpen },
     { name: "Beyond Academics", href: "/beyond-academics", icon: Award },
     { name: "Projects & Mentors", href: "/projects", icon: Users },
   ];
@@ -29,7 +29,7 @@ const Header = () => {
               <GraduationCap className="h-6 w-6 text-white" />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold academic-heading">EduRev</h1>
+              <h1 className="text-xl font-bold academic-heading">Edu Revolution</h1>
               <p className="text-xs text-muted-foreground">Excellence Portal</p>
             </div>
           </Link>

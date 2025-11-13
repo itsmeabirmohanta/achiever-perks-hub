@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, ArrowLeft, GraduationCap, Target, Clock } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 
 const Courses = () => {
   const coreSubjects = [
@@ -79,7 +79,7 @@ const Courses = () => {
         <div className="mb-8">
           <Link to="/edu-rev" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-4">
             <ArrowLeft className="w-4 h-4" />
-            Back to EduRev
+            Back to Edu Revolution
           </Link>
           
           <div className="text-center">
@@ -87,7 +87,7 @@ const Courses = () => {
               Your Enrolled Courses
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Discover the available EduRev benefits for each of your courses.
+              Discover the available Edu Revolution benefits for each of your courses.
             </p>
           </div>
         </div>

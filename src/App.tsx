@@ -3,29 +3,41 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Feature-based imports
 import Index from "./pages/Index";
-import EduRev from "./pages/EduRev";
-import EduRevAddAchievement from "./pages/EduRevAddAchievement";
-import EduRevCategoryCourses from "./pages/EduRevCategoryCourses";
-import EduRevRPLForm from "./pages/forms/EduRevRPLForm";
-import EduRevMOOCForm from "./pages/forms/EduRevMOOCForm";
-import EduRevGradeUpgradeForm from "./pages/forms/EduRevGradeUpgradeForm";
-import EduRevProjectForm from "./pages/forms/EduRevProjectForm";
-import EduRevExtraCreditsForm from "./pages/forms/EduRevExtraCreditsForm";
-import EduRevSocialMediaForm from "./pages/forms/EduRevSocialMediaForm";
-import EduRevRevenueGenerationForm from "./pages/forms/EduRevRevenueGenerationForm";
-import EduRevInternshipsForm from "./pages/forms/EduRevInternshipsForm";
-import EduRevCommunityServiceForm from "./pages/forms/EduRevCommunityServiceForm";
+import { 
+  EduRevolutionPage,
+  AddAchievementPage as EduRevAddAchievement,
+  CategoryCoursesPage as EduRevCategoryCourses,
+  RPLForm,
+  MOOCForm,
+  GradeUpgradeForm,
+  ProjectForm,
+  ExtraCreditsForm,
+  SocialMediaForm,
+  RevenueGenerationForm,
+  InternshipsForm,
+  CommunityServiceForm,
+  CoCurricularForm,
+  AttendanceRelaxationForm,
+  DutyLeavesForm
+} from "@/features/edu-revolution";
+
+import {
+  BeyondAcademicsPage,
+  AddAchievementPage as BeyondAcademicsAddAchievement,
+  LeaderboardPage as BeyondAcademicsLeaderboard
+} from "@/features/beyond-academics";
+
+import { DashboardPage as Dashboard } from "@/features/dashboard";
+import { LoginPage as Login, SignupPage as Signup } from "@/features/auth";
+import { ProjectsPage as Projects } from "@/features/projects";
+
+// Remaining pages (to be organized later)
 import Courses from "./pages/Courses";
 import StudentReferral from "./pages/StudentReferral";
-import BeyondAcademics from "./pages/BeyondAcademics";
-import BeyondAcademicsAddAchievement from "./pages/BeyondAcademicsAddAchievement";
-import BeyondAcademicsLeaderboard from "./pages/BeyondAcademicsLeaderboard";
-import Dashboard from "./pages/Dashboard";
 import Achievements from "./pages/Achievements";
-import Projects from "./pages/Projects";
-import { Login } from "./pages/Login";
-import { Signup } from "./pages/Signup";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,22 +50,25 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/edu-rev" element={<EduRev />} />
+          <Route path="/edu-rev" element={<EduRevolutionPage />} />
           <Route path="/edurev/courses/:categoryName" element={<EduRevCategoryCourses />} />
-          <Route path="/edurev/apply/rpl/:courseCode?" element={<EduRevRPLForm />} />
-          <Route path="/edurev/apply/mooc/:courseCode?" element={<EduRevMOOCForm />} />
-          <Route path="/edurev/apply/grade-upgradation/:courseCode?" element={<EduRevGradeUpgradeForm />} />
-          <Route path="/edurev/apply/project/:courseCode?" element={<EduRevProjectForm />} />
-          <Route path="/edurev/apply/extra-credits/:courseCode?" element={<EduRevExtraCreditsForm />} />
-          <Route path="/edurev/apply/social-media/:courseCode?" element={<EduRevSocialMediaForm />} />
-          <Route path="/edurev/apply/revenue-generation/:courseCode?" element={<EduRevRevenueGenerationForm />} />
-          <Route path="/edurev/apply/internships/:courseCode?" element={<EduRevInternshipsForm />} />
-          <Route path="/edurev/apply/community-service/:courseCode?" element={<EduRevCommunityServiceForm />} />
+          <Route path="/edurev/apply/rpl/:courseCode?" element={<RPLForm />} />
+          <Route path="/edurev/apply/mooc/:courseCode?" element={<MOOCForm />} />
+          <Route path="/edurev/apply/grade-upgradation/:courseCode?" element={<GradeUpgradeForm />} />
+          <Route path="/edurev/apply/project/:courseCode?" element={<ProjectForm />} />
+          <Route path="/edurev/apply/extra-credits/:courseCode?" element={<ExtraCreditsForm />} />
+          <Route path="/edurev/apply/social-media/:courseCode?" element={<SocialMediaForm />} />
+          <Route path="/edurev/apply/revenue-generation/:courseCode?" element={<RevenueGenerationForm />} />
+          <Route path="/edurev/apply/internships/:courseCode?" element={<InternshipsForm />} />
+          <Route path="/edurev/apply/community-service/:courseCode?" element={<CommunityServiceForm />} />
+          <Route path="/edurev/apply/co-curricular/:courseCode?" element={<CoCurricularForm />} />
+          <Route path="/edurev/apply/attendance-relaxation/:courseCode?" element={<AttendanceRelaxationForm />} />
+          <Route path="/edurev/apply/duty-leaves/:courseCode?" element={<DutyLeavesForm />} />
           <Route path="/edurev/apply/:categoryName/:courseCode" element={<EduRevAddAchievement />} />
           <Route path="/edurev-add-achievement" element={<EduRevAddAchievement />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/student-referral" element={<StudentReferral />} />
-          <Route path="/beyond-academics" element={<BeyondAcademics />} />
+          <Route path="/beyond-academics" element={<BeyondAcademicsPage />} />
           <Route path="/beyond-academics-add-achievement" element={<BeyondAcademicsAddAchievement />} />
           <Route path="/beyond-academics-leaderboard" element={<BeyondAcademicsLeaderboard />} />
           <Route path="/dashboard" element={<Dashboard />} />

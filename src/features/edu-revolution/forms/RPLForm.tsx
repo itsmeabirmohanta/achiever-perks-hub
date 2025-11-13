@@ -20,7 +20,7 @@ import {
   CheckCircle,
   GraduationCap,
 } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { useParams, Link } from "react-router-dom";
 
@@ -158,7 +158,7 @@ const EduRevRPLForm = () => {
             to="/edu-rev"
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-4"
           >
-            ← Back to EduRev
+            ← Back to Edu Revolution
           </Link>
           <div className="text-center">
             <Badge className="mb-4 bg-green-100 text-green-800 border-green-300">

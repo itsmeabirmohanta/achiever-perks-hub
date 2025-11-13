@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Medal, Award, Crown, Star, Upload, TrendingUp } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 import { useToast } from "@/hooks/use-toast";
 
 const Achievements = () => {

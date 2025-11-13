@@ -6,12 +6,12 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Upload, Briefcase, Award, FileText, CheckCircle, Building2 } from "lucide-react";
-import Header from "@/components/Header";
+import { Upload, Share2, Award, FileText, CheckCircle, Users } from "lucide-react";
+import Header from "@/shared/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { useParams, Link } from "react-router-dom";
 
-const EduRevInternshipsForm = () => {
+const EduRevSocialMediaForm = () => {
   const { courseCode } = useParams<{ courseCode?: string }>();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,50 +23,49 @@ const EduRevInternshipsForm = () => {
     courseCode: courseCode || "",
     courseName: "",
     
-    // Internship Information
-    companyName: "",
-    companyWebsite: "",
-    industry: "",
-    customIndustry: "",
-    position: "",
-    department: "",
+    // Platform Information
+    platform: "",
+    customPlatform: "",
+    profileUrl: "",
+    username: "",
     
-    // Duration
-    startDate: "",
-    endDate: "",
-    duration: "",
-    internshipType: "",
-    customInternshipType: "",
+    // Metrics
+    followers: "",
+    totalViews: "",
+    totalLikes: "",
+    totalShares: "",
     
-    // Stipend
-    stipendAmount: "",
+    // Content Details
+    contentType: "",
+    customContentType: "",
+    contentTheme: "",
+    contentDescription: "",
     
-    // Description
-    description: "",
+    // Details
+    details: "",
   });
 
-  const industries = [
-    "Technology/IT",
-    "Finance",
-    "Healthcare",
-    "Marketing",
-    "Manufacturing",
-    "Consulting",
-    "Education",
-    "Non-profit",
-    "Government",
-    "Research & Development",
+  const platforms = [
+    "Instagram",
+    "YouTube",
+    "LinkedIn",
+    "Twitter/X",
+    "TikTok",
+    "Facebook",
+    "Pinterest",
+    "Snapchat",
     "Any other"
   ];
 
-  const internshipTypes = [
-    "Full-time",
-    "Part-time",
-    "Remote",
-    "Hybrid",
-    "Summer Internship",
-    "Winter Internship",
-    "Semester-long",
+  const contentTypes = [
+    "Educational Content",
+    "Entertainment",
+    "Product Reviews",
+    "Tutorials",
+    "Brand Partnerships",
+    "Social Causes",
+    "Tech Reviews",
+    "Lifestyle",
     "Any other"
   ];
 
@@ -92,7 +91,7 @@ const EduRevInternshipsForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.studentName || !formData.courseCode || !formData.companyName || !formData.position) {
+    if (!formData.studentName || !formData.courseCode || !formData.platform || !formData.profileUrl) {
       toast({
         title: "Incomplete Information",
         description: "Please fill in all required fields.",
@@ -107,8 +106,8 @@ const EduRevInternshipsForm = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       toast({
-        title: "Internship Application Submitted! 💼",
-        description: "Your internship experience has been sent for faculty review.",
+        title: "Social Media Achievement Submitted! 📱",
+        description: "Your social media achievement has been sent for faculty review.",
       });
       
       setFormData({
@@ -116,19 +115,19 @@ const EduRevInternshipsForm = () => {
         studentId: "",
         courseCode: courseCode || "",
         courseName: "",
-        companyName: "",
-        companyWebsite: "",
-        industry: "",
-        customIndustry: "",
-        position: "",
-        department: "",
-        startDate: "",
-        endDate: "",
-        duration: "",
-        internshipType: "",
-        customInternshipType: "",
-        stipendAmount: "",
-        description: "",
+        platform: "",
+        customPlatform: "",
+        profileUrl: "",
+        username: "",
+        followers: "",
+        totalViews: "",
+        totalLikes: "",
+        totalShares: "",
+        contentType: "",
+        customContentType: "",
+        contentTheme: "",
+        contentDescription: "",
+        details: "",
       });
       setSelectedFile(null);
       
@@ -149,16 +148,16 @@ const EduRevInternshipsForm = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <Link to="/edu-rev" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-4">
-            ← Back to EduRev
+            ← Back to Edu Revolution
           </Link>
           <div className="text-center">
-            <Badge className="mb-4 bg-blue-100 text-blue-800 border-blue-300">
-              <Briefcase className="w-4 h-4 mr-1" />
-              Internship Experience
+            <Badge className="mb-4 bg-purple-100 text-purple-800 border-purple-300">
+              <Share2 className="w-4 h-4 mr-1" />
+              Social Media Achievement
             </Badge>
-            <h1 className="text-4xl font-bold academic-heading mb-4">Internship Experience Application</h1>
+            <h1 className="text-4xl font-bold academic-heading mb-4">Social Media Achievement Application</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Submit your professional internship experiences for academic benefits
+              Submit your social media achievements and content creation for academic benefits
             </p>
           </div>
         </div>
@@ -166,11 +165,11 @@ const EduRevInternshipsForm = () => {
         <Card className="max-w-4xl mx-auto shadow-elegant">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Building2 className="w-6 h-6 text-primary" />
-              Internship Details
+              <Share2 className="w-6 h-6 text-primary" />
+              Social Media Details
             </CardTitle>
             <CardDescription>
-              Provide comprehensive information about your internship experience
+              Provide comprehensive information about your social media achievement
             </CardDescription>
           </CardHeader>
           
@@ -207,7 +206,7 @@ const EduRevInternshipsForm = () => {
                       id="courseCode"
                       value={formData.courseCode}
                       onChange={(e) => setFormData({...formData, courseCode: e.target.value})}
-                      placeholder="e.g., CSE201"
+                      placeholder="e.g., BUS101"
                       required
                       disabled={!!courseCode}
                     />
@@ -218,161 +217,167 @@ const EduRevInternshipsForm = () => {
                       id="courseName"
                       value={formData.courseName}
                       onChange={(e) => setFormData({...formData, courseName: e.target.value})}
-                      placeholder="e.g., Data Structures"
+                      placeholder="e.g., Business Communication"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Company Information */}
+              {/* Platform Information */}
               <div className="space-y-4 border-b pb-6">
-                <h3 className="text-lg font-semibold text-primary">Company Information</h3>
+                <h3 className="text-lg font-semibold text-primary">Platform Information</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="companyName">Company Name *</Label>
-                    <Input 
-                      id="companyName"
-                      value={formData.companyName}
-                      onChange={(e) => setFormData({...formData, companyName: e.target.value})}
-                      placeholder="e.g., Google, Microsoft"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="industry">Industry *</Label>
-                    <Select value={formData.industry} onValueChange={(value) => setFormData({...formData, industry: value})} required>
+                    <Label htmlFor="platform">Social Media Platform *</Label>
+                    <Select value={formData.platform} onValueChange={(value) => setFormData({...formData, platform: value})} required>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select industry" />
+                        <SelectValue placeholder="Select platform" />
                       </SelectTrigger>
                       <SelectContent>
-                        {industries.map((industry) => (
-                          <SelectItem key={industry} value={industry}>{industry}</SelectItem>
-                        ))}
+                        {platforms.map((platform) => (
+                              <SelectItem key={platform} value={platform}>{platform}</SelectItem>
+                            ))}
                       </SelectContent>
                     </Select>
-                    {formData.industry === "Any other" && (
+                        {formData.platform === "Any other" && (
                       <div className="mt-2">
                         <Input 
-                          placeholder="Please specify industry"
-                          value={formData.customIndustry}
-                          onChange={(e) => setFormData({...formData, customIndustry: e.target.value})}
+                          placeholder="Please specify your platform"
+                          value={formData.customPlatform}
+                          onChange={(e) => setFormData({...formData, customPlatform: e.target.value})}
                         />
                       </div>
                     )}
                   </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="position">Position/Job Title *</Label>
+                    <Label htmlFor="username">Username/Handle</Label>
                     <Input 
-                      id="position"
-                      value={formData.position}
-                      onChange={(e) => setFormData({...formData, position: e.target.value})}
-                      placeholder="e.g., Software Development Intern"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="department">Department</Label>
-                    <Input 
-                      id="department"
-                      value={formData.department}
-                      onChange={(e) => setFormData({...formData, department: e.target.value})}
-                      placeholder="e.g., Engineering, Product Development"
+                      id="username"
+                      value={formData.username}
+                      onChange={(e) => setFormData({...formData, username: e.target.value})}
+                      placeholder="e.g., @yourhandle"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="companyWebsite">Company Website</Label>
+                  <Label htmlFor="profileUrl">Profile URL *</Label>
                   <Input 
-                    id="companyWebsite"
-                    value={formData.companyWebsite}
-                    onChange={(e) => setFormData({...formData, companyWebsite: e.target.value})}
-                    placeholder="https://company.com"
+                    id="profileUrl"
+                    value={formData.profileUrl}
+                    onChange={(e) => setFormData({...formData, profileUrl: e.target.value})}
+                    placeholder="https://instagram.com/yourprofile"
                     type="url"
+                    required
                   />
                 </div>
               </div>
 
-              {/* Duration & Type */}
+              {/* Metrics */}
               <div className="space-y-4 border-b pb-6">
-                <h3 className="text-lg font-semibold text-primary">Duration & Type</h3>
-                <div className="grid md:grid-cols-2 gap-4">
+                <h3 className="text-lg font-semibold text-primary">Performance Metrics</h3>
+                <div className="space-y-2">
+                  <Label htmlFor="followers">Followers/Subscribers Count</Label>
+                  <Input 
+                    id="followers"
+                    type="number"
+                    value={formData.followers}
+                    onChange={(e) => setFormData({...formData, followers: e.target.value})}
+                    placeholder="e.g., 10000"
+                  />
+                </div>
+                <div className="grid md:grid-cols-3 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="startDate">Start Date *</Label>
+                    <Label htmlFor="totalViews">Total Views</Label>
                     <Input 
-                      id="startDate"
-                      type="date"
-                      value={formData.startDate}
-                      onChange={(e) => setFormData({...formData, startDate: e.target.value})}
-                      required
+                      id="totalViews"
+                      type="number"
+                      value={formData.totalViews}
+                      onChange={(e) => setFormData({...formData, totalViews: e.target.value})}
+                      placeholder="e.g., 500000"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="endDate">End Date</Label>
+                    <Label htmlFor="totalLikes">Total Likes</Label>
                     <Input 
-                      id="endDate"
-                      type="date"
-                      value={formData.endDate}
-                      onChange={(e) => setFormData({...formData, endDate: e.target.value})}
+                      id="totalLikes"
+                      type="number"
+                      value={formData.totalLikes}
+                      onChange={(e) => setFormData({...formData, totalLikes: e.target.value})}
+                      placeholder="e.g., 50000"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="totalShares">Total Shares</Label>
+                    <Input 
+                      id="totalShares"
+                      type="number"
+                      value={formData.totalShares}
+                      onChange={(e) => setFormData({...formData, totalShares: e.target.value})}
+                      placeholder="e.g., 5000"
                     />
                   </div>
                 </div>
+              </div>
+
+              {/* Content Details */}
+              <div className="space-y-4 border-b pb-6">
+                <h3 className="text-lg font-semibold text-primary">Content Information</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="duration">Duration (months/weeks)</Label>
-                    <Input 
-                      id="duration"
-                      value={formData.duration}
-                      onChange={(e) => setFormData({...formData, duration: e.target.value})}
-                      placeholder="e.g., 3 months, 12 weeks"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="internshipType">Internship Type</Label>
-                    <Select value={formData.internshipType} onValueChange={(value) => setFormData({...formData, internshipType: value})}>
+                    <Label htmlFor="contentType">Content Type</Label>
+                    <Select value={formData.contentType} onValueChange={(value) => setFormData({...formData, contentType: value})}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select type" />
+                        <SelectValue placeholder="Select content type" />
                       </SelectTrigger>
                       <SelectContent>
-                        {internshipTypes.map((type) => (
+                        {contentTypes.map((type) => (
                           <SelectItem key={type} value={type}>{type}</SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
-                    {formData.internshipType === "Any other" && (
+                    {formData.contentType === "Any other" && (
                       <div className="mt-2">
                         <Input 
-                          placeholder="Please specify internship type"
-                          value={formData.customInternshipType}
-                          onChange={(e) => setFormData({...formData, customInternshipType: e.target.value})}
+                          placeholder="Please specify content type"
+                          value={formData.customContentType}
+                          onChange={(e) => setFormData({...formData, customContentType: e.target.value})}
                         />
                       </div>
                     )}
                   </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="contentTheme">Content Theme/Topic</Label>
+                    <Input 
+                      id="contentTheme"
+                      value={formData.contentTheme}
+                      onChange={(e) => setFormData({...formData, contentTheme: e.target.value})}
+                      placeholder="e.g., Tech Reviews, Educational Tutorials"
+                    />
+                  </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="stipendAmount">Stipend Amount (if applicable)</Label>
-                  <Input 
-                    id="stipendAmount"
-                    value={formData.stipendAmount}
-                    onChange={(e) => setFormData({...formData, stipendAmount: e.target.value})}
-                    placeholder="e.g., ₹10,000 per month or Not Applicable"
+                  <Label htmlFor="contentDescription">Content Description</Label>
+                  <Textarea
+                    id="contentDescription"
+                    placeholder="Describe your content strategy, themes, and key topics..."
+                    value={formData.contentDescription}
+                    onChange={(e) => setFormData({...formData, contentDescription: e.target.value})}
+                    className="min-h-[100px]"
                   />
                 </div>
               </div>
 
-              {/* Description */}
+              {/* Details */}
               <div className="space-y-4 border-b pb-6">
-                <h3 className="text-lg font-semibold text-primary">Description</h3>
+                <h3 className="text-lg font-semibold text-primary">Details</h3>
                 <div className="space-y-2">
-                  <Label htmlFor="description">Internship Description</Label>
+                  <Label htmlFor="details">Additional Details</Label>
                   <Textarea
-                    id="description"
-                    placeholder="Provide comprehensive details about your internship including responsibilities, projects, skills gained, achievements, and overall experience..."
-                    value={formData.description}
-                    onChange={(e) => setFormData({...formData, description: e.target.value})}
-                    className="min-h-[150px]"
+                    id="details"
+                    placeholder="Provide comprehensive details including notable achievements, awards, recognitions, viral content, campaigns run, brand partnerships, collaborations, monetization details, timeline information, and any other relevant information about your social media achievement..."
+                    value={formData.details}
+                    onChange={(e) => setFormData({...formData, details: e.target.value})}
+                    className="min-h-[200px]"
                   />
                 </div>
               </div>
@@ -381,7 +386,7 @@ const EduRevInternshipsForm = () => {
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-primary">Supporting Documents</h3>
                 <div className="space-y-2">
-                  <Label htmlFor="document">Upload Internship Certificate or Offer Letter</Label>
+                  <Label htmlFor="document">Upload Screenshots or Analytics Report</Label>
                   <div className="border-2 border-dashed border-primary/20 rounded-lg p-6 text-center hover:border-primary/40 transition-colors">
                     <Input 
                       id="document" 
@@ -403,7 +408,7 @@ const EduRevInternshipsForm = () => {
                         <>
                           <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                           <p className="text-sm text-muted-foreground">
-                            Click to upload internship certificate, offer letter, or completion letter
+                            Click to upload screenshots or analytics reports
                           </p>
                           <p className="text-xs text-muted-foreground mt-1">
                             PDF, JPG, PNG (Max 10MB)
@@ -424,7 +429,7 @@ const EduRevInternshipsForm = () => {
                 {isSubmitting ? "Submitting..." : (
                   <>
                     <Award className="mr-2 h-5 w-5" />
-                    Submit Internship Experience
+                    Submit Social Media Achievement
                   </>
                 )}
               </Button>
@@ -432,17 +437,17 @@ const EduRevInternshipsForm = () => {
           </CardContent>
         </Card>
 
-        <Card className="max-w-4xl mx-auto mt-6 bg-blue-50 border-blue-200">
+        <Card className="max-w-4xl mx-auto mt-6 bg-purple-50 border-purple-200">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-blue-600 mt-0.5" />
+              <CheckCircle className="w-6 h-6 text-purple-600 mt-0.5" />
               <div>
-                <h4 className="font-semibold text-blue-900 mb-2">Internship Benefits</h4>
-                <ul className="text-sm text-blue-800 space-y-1">
-                  <li>• Practical experience credit</li>
-                  <li>• Industry exposure recognition</li>
-                  <li>• Industrial training equivalency</li>
-                  <li>• Project collaboration opportunities</li>
+                <h4 className="font-semibold text-purple-900 mb-2">Social Media Benefits</h4>
+                <ul className="text-sm text-purple-800 space-y-1">
+                  <li>• Bonus marks for verified social media achievements</li>
+                  <li>• Opportunity to guest lecture on digital marketing</li>
+                  <li>• Direct credit for practical assignments</li>
+                  <li>• Industry partnership opportunities</li>
                 </ul>
               </div>
             </div>
@@ -453,5 +458,5 @@ const EduRevInternshipsForm = () => {
   );
 };
 
-export default EduRevInternshipsForm;
+export default EduRevSocialMediaForm;
 

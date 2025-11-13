@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, ArrowLeft, GraduationCap, Target, Clock } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 import { useEffect, useState } from "react";
 
 interface Course {
@@ -229,7 +229,7 @@ const EduRevCategoryCourses = () => {
         <div className="container mx-auto px-4 py-8 text-center">
           <h1 className="text-4xl font-bold">Category not found</h1>
           <Link to="/edu-rev" className="mt-4 inline-block text-primary">
-            Back to EduRev
+            Back to Edu Revolution
           </Link>
         </div>
       </div>
@@ -244,7 +244,7 @@ const EduRevCategoryCourses = () => {
         <div className="mb-8">
           <Link to="/edu-rev" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-4">
             <ArrowLeft className="w-4 h-4" />
-            Back to EduRev Categories
+            Back to Edu Revolution Categories
           </Link>
           
           <div className="text-center">

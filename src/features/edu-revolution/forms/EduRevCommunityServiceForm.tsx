@@ -6,12 +6,12 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Upload, Share2, Award, FileText, CheckCircle, Users } from "lucide-react";
-import Header from "@/components/Header";
+import { Upload, Heart, Award, FileText, CheckCircle, Users } from "lucide-react";
+import Header from "@/shared/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { useParams, Link } from "react-router-dom";
 
-const EduRevSocialMediaForm = () => {
+const EduRevCommunityServiceForm = () => {
   const { courseCode } = useParams<{ courseCode?: string }>();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,49 +23,57 @@ const EduRevSocialMediaForm = () => {
     courseCode: courseCode || "",
     courseName: "",
     
-    // Platform Information
-    platform: "",
-    customPlatform: "",
-    profileUrl: "",
-    username: "",
+    // Organization Information
+    organizationName: "",
+    organizationType: "",
+    customOrganizationType: "",
+    organizationWebsite: "",
     
-    // Metrics
-    followers: "",
-    totalViews: "",
-    totalLikes: "",
-    totalShares: "",
+    // Service Details
+    serviceType: "",
+    customServiceType: "",
+    projectName: "",
+    serviceDescription: "",
     
-    // Content Details
-    contentType: "",
-    customContentType: "",
-    contentTheme: "",
-    contentDescription: "",
-    
-    // Details
-    details: "",
+    // Duration
+    startDate: "",
+    endDate: "",
   });
 
-  const platforms = [
-    "Instagram",
-    "YouTube",
-    "LinkedIn",
-    "Twitter/X",
-    "TikTok",
-    "Facebook",
-    "Pinterest",
-    "Snapchat",
+  const organizationTypes = [
+    "NGO",
+    "Government Organization",
+    "Religious Organization",
+    "Educational Institution",
+    "Healthcare Facility",
+    "Community Center",
+    "Environmental Organization",
+    "Youth Organization",
     "Any other"
   ];
 
-  const contentTypes = [
-    "Educational Content",
-    "Entertainment",
-    "Product Reviews",
-    "Tutorials",
-    "Brand Partnerships",
-    "Social Causes",
-    "Tech Reviews",
-    "Lifestyle",
+  const serviceTypes = [
+    "Education & Tutoring",
+    "Healthcare Services",
+    "Environmental Conservation",
+    "Community Development",
+    "Disaster Relief",
+    "Elderly Care",
+    "Child Welfare",
+    "Animal Welfare",
+    "Clean-up Drives",
+    "Fundraising",
+    "Mentoring",
+    "Any other"
+  ];
+
+  const serviceFrequencies = [
+    "One-time Event",
+    "Weekly",
+    "Bi-weekly",
+    "Monthly",
+    "Seasonal",
+    "Ongoing",
     "Any other"
   ];
 
@@ -91,7 +99,7 @@ const EduRevSocialMediaForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.studentName || !formData.courseCode || !formData.platform || !formData.profileUrl) {
+    if (!formData.studentName || !formData.courseCode || !formData.organizationName || !formData.serviceType) {
       toast({
         title: "Incomplete Information",
         description: "Please fill in all required fields.",
@@ -106,8 +114,8 @@ const EduRevSocialMediaForm = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       toast({
-        title: "Social Media Achievement Submitted! 📱",
-        description: "Your social media achievement has been sent for faculty review.",
+        title: "Community Service Application Submitted! 🤝",
+        description: "Your community service contribution has been sent for faculty review.",
       });
       
       setFormData({
@@ -115,19 +123,16 @@ const EduRevSocialMediaForm = () => {
         studentId: "",
         courseCode: courseCode || "",
         courseName: "",
-        platform: "",
-        customPlatform: "",
-        profileUrl: "",
-        username: "",
-        followers: "",
-        totalViews: "",
-        totalLikes: "",
-        totalShares: "",
-        contentType: "",
-        customContentType: "",
-        contentTheme: "",
-        contentDescription: "",
-        details: "",
+        organizationName: "",
+        organizationType: "",
+        customOrganizationType: "",
+        organizationWebsite: "",
+        serviceType: "",
+        customServiceType: "",
+        projectName: "",
+        serviceDescription: "",
+        startDate: "",
+        endDate: "",
       });
       setSelectedFile(null);
       
@@ -148,16 +153,16 @@ const EduRevSocialMediaForm = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <Link to="/edu-rev" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-4">
-            ← Back to EduRev
+            ← Back to Edu Revolution
           </Link>
           <div className="text-center">
-            <Badge className="mb-4 bg-purple-100 text-purple-800 border-purple-300">
-              <Share2 className="w-4 h-4 mr-1" />
-              Social Media Achievement
+            <Badge className="mb-4 bg-pink-100 text-pink-800 border-pink-300">
+              <Heart className="w-4 h-4 mr-1" />
+              Community Service
             </Badge>
-            <h1 className="text-4xl font-bold academic-heading mb-4">Social Media Achievement Application</h1>
+            <h1 className="text-4xl font-bold academic-heading mb-4">Community Service Application</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Submit your social media achievements and content creation for academic benefits
+              Submit your community service contributions for credits and recognition
             </p>
           </div>
         </div>
@@ -165,11 +170,11 @@ const EduRevSocialMediaForm = () => {
         <Card className="max-w-4xl mx-auto shadow-elegant">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Share2 className="w-6 h-6 text-primary" />
-              Social Media Details
+              <Users className="w-6 h-6 text-primary" />
+              Community Service Details
             </CardTitle>
             <CardDescription>
-              Provide comprehensive information about your social media achievement
+              Provide comprehensive information about your community service work
             </CardDescription>
           </CardHeader>
           
@@ -206,7 +211,7 @@ const EduRevSocialMediaForm = () => {
                       id="courseCode"
                       value={formData.courseCode}
                       onChange={(e) => setFormData({...formData, courseCode: e.target.value})}
-                      placeholder="e.g., BUS101"
+                      placeholder="e.g., ENV201"
                       required
                       disabled={!!courseCode}
                     />
@@ -217,168 +222,133 @@ const EduRevSocialMediaForm = () => {
                       id="courseName"
                       value={formData.courseName}
                       onChange={(e) => setFormData({...formData, courseName: e.target.value})}
-                      placeholder="e.g., Business Communication"
+                      placeholder="e.g., Environmental Studies"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Platform Information */}
+              {/* Organization Information */}
               <div className="space-y-4 border-b pb-6">
-                <h3 className="text-lg font-semibold text-primary">Platform Information</h3>
+                <h3 className="text-lg font-semibold text-primary">Organization Information</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="platform">Social Media Platform *</Label>
-                    <Select value={formData.platform} onValueChange={(value) => setFormData({...formData, platform: value})} required>
+                    <Label htmlFor="organizationName">Organization Name *</Label>
+                    <Input 
+                      id="organizationName"
+                      value={formData.organizationName}
+                      onChange={(e) => setFormData({...formData, organizationName: e.target.value})}
+                      placeholder="e.g., Red Cross, Local NGO"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="organizationType">Organization Type *</Label>
+                    <Select value={formData.organizationType} onValueChange={(value) => setFormData({...formData, organizationType: value})} required>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select platform" />
+                        <SelectValue placeholder="Select organization type" />
                       </SelectTrigger>
                       <SelectContent>
-                        {platforms.map((platform) => (
-                              <SelectItem key={platform} value={platform}>{platform}</SelectItem>
-                            ))}
+                        {organizationTypes.map((type) => (
+                          <SelectItem key={type} value={type}>{type}</SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
-                        {formData.platform === "Any other" && (
+                    {formData.organizationType === "Any other" && (
                       <div className="mt-2">
                         <Input 
-                          placeholder="Please specify your platform"
-                          value={formData.customPlatform}
-                          onChange={(e) => setFormData({...formData, customPlatform: e.target.value})}
+                          placeholder="Please specify organization type"
+                          value={formData.customOrganizationType}
+                          onChange={(e) => setFormData({...formData, customOrganizationType: e.target.value})}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="organizationWebsite">Organization Website</Label>
+                  <Input 
+                    id="organizationWebsite"
+                    value={formData.organizationWebsite}
+                    onChange={(e) => setFormData({...formData, organizationWebsite: e.target.value})}
+                    placeholder="https://organization.org"
+                    type="url"
+                  />
+                </div>
+              </div>
+
+              {/* Service Details */}
+              <div className="space-y-4 border-b pb-6">
+                <h3 className="text-lg font-semibold text-primary">Service Details</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="serviceType">Service Type *</Label>
+                    <Select value={formData.serviceType} onValueChange={(value) => setFormData({...formData, serviceType: value})} required>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select service type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {serviceTypes.map((type) => (
+                          <SelectItem key={type} value={type}>{type}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {formData.serviceType === "Any other" && (
+                      <div className="mt-2">
+                        <Input 
+                          placeholder="Please specify service type"
+                          value={formData.customServiceType}
+                          onChange={(e) => setFormData({...formData, customServiceType: e.target.value})}
                         />
                       </div>
                     )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="username">Username/Handle</Label>
+                    <Label htmlFor="projectName">Project/Initiative Name</Label>
                     <Input 
-                      id="username"
-                      value={formData.username}
-                      onChange={(e) => setFormData({...formData, username: e.target.value})}
-                      placeholder="e.g., @yourhandle"
+                      id="projectName"
+                      value={formData.projectName}
+                      onChange={(e) => setFormData({...formData, projectName: e.target.value})}
+                      placeholder="e.g., Clean Water Initiative"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="profileUrl">Profile URL *</Label>
-                  <Input 
-                    id="profileUrl"
-                    value={formData.profileUrl}
-                    onChange={(e) => setFormData({...formData, profileUrl: e.target.value})}
-                    placeholder="https://instagram.com/yourprofile"
-                    type="url"
+                  <Label htmlFor="serviceDescription">Service Description *</Label>
+                  <Textarea
+                    id="serviceDescription"
+                    placeholder="Provide a detailed description of your community service work, activities, and contributions..."
+                    value={formData.serviceDescription}
+                    onChange={(e) => setFormData({...formData, serviceDescription: e.target.value})}
+                    className="min-h-[100px]"
                     required
                   />
                 </div>
               </div>
 
-              {/* Metrics */}
+              {/* Duration & Location */}
               <div className="space-y-4 border-b pb-6">
-                <h3 className="text-lg font-semibold text-primary">Performance Metrics</h3>
-                <div className="space-y-2">
-                  <Label htmlFor="followers">Followers/Subscribers Count</Label>
-                  <Input 
-                    id="followers"
-                    type="number"
-                    value={formData.followers}
-                    onChange={(e) => setFormData({...formData, followers: e.target.value})}
-                    placeholder="e.g., 10000"
-                  />
-                </div>
-                <div className="grid md:grid-cols-3 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="totalViews">Total Views</Label>
-                    <Input 
-                      id="totalViews"
-                      type="number"
-                      value={formData.totalViews}
-                      onChange={(e) => setFormData({...formData, totalViews: e.target.value})}
-                      placeholder="e.g., 500000"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="totalLikes">Total Likes</Label>
-                    <Input 
-                      id="totalLikes"
-                      type="number"
-                      value={formData.totalLikes}
-                      onChange={(e) => setFormData({...formData, totalLikes: e.target.value})}
-                      placeholder="e.g., 50000"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="totalShares">Total Shares</Label>
-                    <Input 
-                      id="totalShares"
-                      type="number"
-                      value={formData.totalShares}
-                      onChange={(e) => setFormData({...formData, totalShares: e.target.value})}
-                      placeholder="e.g., 5000"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Content Details */}
-              <div className="space-y-4 border-b pb-6">
-                <h3 className="text-lg font-semibold text-primary">Content Information</h3>
+                <h3 className="text-lg font-semibold text-primary">Duration & Location</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="contentType">Content Type</Label>
-                    <Select value={formData.contentType} onValueChange={(value) => setFormData({...formData, contentType: value})}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select content type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {contentTypes.map((type) => (
-                          <SelectItem key={type} value={type}>{type}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    {formData.contentType === "Any other" && (
-                      <div className="mt-2">
-                        <Input 
-                          placeholder="Please specify content type"
-                          value={formData.customContentType}
-                          onChange={(e) => setFormData({...formData, customContentType: e.target.value})}
-                        />
-                      </div>
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="contentTheme">Content Theme/Topic</Label>
+                    <Label htmlFor="startDate">Start Date *</Label>
                     <Input 
-                      id="contentTheme"
-                      value={formData.contentTheme}
-                      onChange={(e) => setFormData({...formData, contentTheme: e.target.value})}
-                      placeholder="e.g., Tech Reviews, Educational Tutorials"
+                      id="startDate"
+                      type="date"
+                      value={formData.startDate}
+                      onChange={(e) => setFormData({...formData, startDate: e.target.value})}
+                      required
                     />
                   </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="contentDescription">Content Description</Label>
-                  <Textarea
-                    id="contentDescription"
-                    placeholder="Describe your content strategy, themes, and key topics..."
-                    value={formData.contentDescription}
-                    onChange={(e) => setFormData({...formData, contentDescription: e.target.value})}
-                    className="min-h-[100px]"
-                  />
-                </div>
-              </div>
-
-              {/* Details */}
-              <div className="space-y-4 border-b pb-6">
-                <h3 className="text-lg font-semibold text-primary">Details</h3>
-                <div className="space-y-2">
-                  <Label htmlFor="details">Additional Details</Label>
-                  <Textarea
-                    id="details"
-                    placeholder="Provide comprehensive details including notable achievements, awards, recognitions, viral content, campaigns run, brand partnerships, collaborations, monetization details, timeline information, and any other relevant information about your social media achievement..."
-                    value={formData.details}
-                    onChange={(e) => setFormData({...formData, details: e.target.value})}
-                    className="min-h-[200px]"
-                  />
+                  <div className="space-y-2">
+                    <Label htmlFor="endDate">End Date</Label>
+                    <Input 
+                      id="endDate"
+                      type="date"
+                      value={formData.endDate}
+                      onChange={(e) => setFormData({...formData, endDate: e.target.value})}
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -386,7 +356,7 @@ const EduRevSocialMediaForm = () => {
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-primary">Supporting Documents</h3>
                 <div className="space-y-2">
-                  <Label htmlFor="document">Upload Screenshots or Analytics Report</Label>
+                  <Label htmlFor="document">Upload Certificate, Letter of Recommendation, or Proof</Label>
                   <div className="border-2 border-dashed border-primary/20 rounded-lg p-6 text-center hover:border-primary/40 transition-colors">
                     <Input 
                       id="document" 
@@ -408,7 +378,7 @@ const EduRevSocialMediaForm = () => {
                         <>
                           <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                           <p className="text-sm text-muted-foreground">
-                            Click to upload screenshots or analytics reports
+                            Click to upload certificate, recommendation letter, or proof of service
                           </p>
                           <p className="text-xs text-muted-foreground mt-1">
                             PDF, JPG, PNG (Max 10MB)
@@ -429,7 +399,7 @@ const EduRevSocialMediaForm = () => {
                 {isSubmitting ? "Submitting..." : (
                   <>
                     <Award className="mr-2 h-5 w-5" />
-                    Submit Social Media Achievement
+                    Submit Community Service Application
                   </>
                 )}
               </Button>
@@ -437,17 +407,17 @@ const EduRevSocialMediaForm = () => {
           </CardContent>
         </Card>
 
-        <Card className="max-w-4xl mx-auto mt-6 bg-purple-50 border-purple-200">
+        <Card className="max-w-4xl mx-auto mt-6 bg-pink-50 border-pink-200">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-purple-600 mt-0.5" />
+              <CheckCircle className="w-6 h-6 text-pink-600 mt-0.5" />
               <div>
-                <h4 className="font-semibold text-purple-900 mb-2">Social Media Benefits</h4>
-                <ul className="text-sm text-purple-800 space-y-1">
-                  <li>• Bonus marks for verified social media achievements</li>
-                  <li>• Opportunity to guest lecture on digital marketing</li>
-                  <li>• Direct credit for practical assignments</li>
-                  <li>• Industry partnership opportunities</li>
+                <h4 className="font-semibold text-pink-900 mb-2">Community Service Benefits</h4>
+                <ul className="text-sm text-pink-800 space-y-1">
+                  <li>• Community service credit</li>
+                  <li>• Sustainability leadership recognition</li>
+                  <li>• Social impact credits</li>
+                  <li>• Community engagement certificate</li>
                 </ul>
               </div>
             </div>
@@ -458,5 +428,5 @@ const EduRevSocialMediaForm = () => {
   );
 };
 
-export default EduRevSocialMediaForm;
+export default EduRevCommunityServiceForm;
 

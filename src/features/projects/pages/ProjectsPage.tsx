@@ -8,7 +8,7 @@ import {
   Briefcase, Users, Mail, ExternalLink, Plus, 
   Code, Lightbulb, Calendar, MapPin, Star 
 } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 import { useToast } from "@/hooks/use-toast";
 
 const Projects = () => {

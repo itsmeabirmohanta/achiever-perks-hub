@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Upload, Code, Award, FileText, CheckCircle, GraduationCap } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { useParams, Link } from "react-router-dom";
 
@@ -116,7 +116,7 @@ const EduRevProjectForm = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <Link to="/edu-rev" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-4">
-            ← Back to EduRev
+            ← Back to Edu Revolution
           </Link>
           <div className="text-center">
             <Badge className="mb-4 bg-orange-100 text-orange-800 border-orange-300">

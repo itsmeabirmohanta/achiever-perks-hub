@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Upload, BookOpen, Award, CheckCircle, FileText } from "lucide-react";
-import Header from "@/components/Header";
+import Header from "@/shared/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -190,7 +190,7 @@ const EduRevAddAchievement = () => {
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold academic-heading mb-4">
-            EduRev Portal
+            Edu Revolution Portal
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Submit your structured achievements aligned to academic, research, or career pathways.

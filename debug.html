@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug White Screen</title>
+</head>
+<body>
+    <script>
+        // Check if the app is loading at all
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded');
+            const root = document.getElementById('root');
+            if (root) {
+                console.log('Root element found:', root);
+                console.log('Root HTML:', root.innerHTML);
+                if (root.innerHTML.trim() === '') {
+                    console.error('Root element is empty - this is the white screen issue');
+                }
+            } else {
+                console.error('Root element not found');
+            }
+        });
+        
+        // Check for JavaScript errors
+        window.addEventListener('error', (e) => {
+            console.error('JavaScript Error:', e.error);
+        });
+        
+        // Check for unhandled promise rejections
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled Promise Rejection:', e.reason);
+        });
+    </script>
+    
+    <script type="module">
+        // Check if ES modules are working
+        console.log('ES modules loading...');
+        try {
+            import('./src/main.tsx').then(() => {
+                console.log('Main module loaded successfully');
+            }).catch(err => {
+                console.error('Error loading main module:', err);
+            });
+        } catch (err) {
+            console.error('Error importing main module:', err);
+        }
+    </script>
+</body>
+</html>
