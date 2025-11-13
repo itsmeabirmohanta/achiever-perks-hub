@@ -5,6 +5,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+// Export scaling utilities
+export * from './rateLimiter';
+export * from './cache';
+export * from './apiClient';
+export * from './performanceMonitor';
+export * from './security';
+
 // File utility functions
 export const validateFileSize = (file: File, maxSizeInMB: number = 10): boolean => {
   const maxSizeInBytes = maxSizeInMB * 1024 * 1024;

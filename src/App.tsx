@@ -3,6 +3,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { performanceMonitor } from "@/shared/utils/performanceMonitor";
+import { CSPManager } from "@/shared/utils/security";
 
 // Feature-based imports
 import Index from "./pages/Index";
@@ -40,11 +43,35 @@ import StudentReferral from "./pages/StudentReferral";
 import Achievements from "./pages/Achievements";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes (formerly cacheTime)
+      retry: 3,
+      retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    },
+  },
+});
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+const App = () => {
+  useEffect(() => {
+    // Initialize performance monitoring
+    performanceMonitor.recordMetric('app_start', performance.now());
+    
+    // Apply security headers
+    CSPManager.applyCSP({
+      'script-src': ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net'],
+      'connect-src': ["'self'", 'https://oaolfwlfnrmrpukpkqxf.supabase.co', 'wss://realtime.supabase.co'],
+    });
+
+    // Track app initialization
+    performanceMonitor.recordInteraction('app_initialized');
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
@@ -82,6 +109,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;
